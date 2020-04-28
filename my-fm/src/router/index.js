@@ -6,6 +6,7 @@ const appCover = () => import("../components/navbar/appCover.vue");
 const home = () => import("../components/navbar/home/home.vue");
 const login = () => import("../components/navbar/login.vue");
 const comment = () => import("../components/navbar/xinliFM/comment.vue");
+const search = () => import("../components/navbar/xinliFM/search.vue");
 Vue.use(VueRouter);
 
 const routes = [
@@ -30,6 +31,11 @@ const routes = [
     path: "/fm/category/playerpage/comment/:id",
     component: comment,
     name: "comment"
+  },
+  {
+    path: '/fm/find/search',
+    component: search,
+    name: "search"
   },
 ];
 

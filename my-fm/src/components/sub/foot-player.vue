@@ -169,7 +169,7 @@ export default {
     ])
   },
   created() {
-    this.getPlayer();
+    // this.getPlayer();
   },
   methods: {
     //大播放器

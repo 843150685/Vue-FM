@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 Vue.use(Vuex);
-
+let historyWordsList = JSON.parse(localStorage.getItem('historyWordsList') || '[]'); //取出本地储存的搜索记录
 export default new Vuex.Store({
   state: {
     key: "&key=046b6a2a43dc6ff6e770255f57328f89", //配置请求的key
@@ -10,7 +10,7 @@ export default new Vuex.Store({
     swiperInitial: 1, //首页大录播图 默认显示页面
     mediaUrlId: "", //歌曲播放的id
     selectIndex: 0, //当前正在播放歌曲在列表里的的索引
-    //historyWordsList, //搜索框的历史纪录词
+    historyWordsList, //搜索框的历史纪录词
     radioPopupShow: false, //控制底部radioPopup的显示与隐藏
     radioObj: {}, //radioPopup的内容
     //-----播发器控制部分-------------------------
@@ -60,6 +60,15 @@ export default new Vuex.Store({
      //设置首页轮播页面 回退时是之前进入时的页面
      setSwiperInitial(state, num) {
       state.swiperInitial = num;
+    },
+    // 设置搜索页面历史词记录
+    addHstoryWords(state, searchWord) {
+      if (state.historyWordsList.indexOf(searchWord) != -1) {
+        let index = state.historyWordsList.indexOf(searchWord);
+        state.historyWordsList.splice(index, 1);
+      }
+      state.historyWordsList.unshift(searchWord);
+      localStorage.setItem('historyWordsList', JSON.stringify(state.historyWordsList));
     },
   },
   getters: {

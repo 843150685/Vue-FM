@@ -3,7 +3,7 @@ const debug = process.env.NODE_ENV !== "production"; // 开发模式
 
 module.exports = {
   // 部署应用包时的基本URL，如果是生产环境，部署到 /clistudy/dist 路径；如果是开发环境，部署到根路径
-  publicPath: !debug ? "./" : "./",
+  publicPath: !debug ? "/" : "/",
 
   // 输出文件路径
   outputDir: "dist",
@@ -33,8 +33,7 @@ module.exports = {
     Object.assign(config, {
       resolve: {
         alias: {
-          "@": path.resolve(__dirname, "./src"),
-          vue$: "vue/dist/vue.esm.js"
+        
         }
       }
     });
