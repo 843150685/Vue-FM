@@ -58,13 +58,18 @@ data() {
       this.$store.commit("addHstoryWords", this.Word); //使用vuex 添加搜索记录的词
     },
     changeWord(hotWord) {
-      console.log(hotWord)
+      //console.log(hotWord)
       this.Word = hotWord;
       this.show = false;
       this.$store.commit("addHstoryWords", this.Word);
     },
     goBack() {
-      this.$router.go(-1);
+      if (this.show) {
+        this.$router.go(-1);
+      }   
+      else{
+        this.show=true;
+      }
     }
   },
   components: {

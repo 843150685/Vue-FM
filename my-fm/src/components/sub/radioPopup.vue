@@ -39,11 +39,6 @@
 
 <script>
 export default {
-    data() {
-        return {
-            
-        }
-    },
    computed: {
     radioPopupShow: {
       get() {

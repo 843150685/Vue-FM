@@ -70,6 +70,20 @@ export default new Vuex.Store({
       state.historyWordsList.unshift(searchWord);
       localStorage.setItem('historyWordsList', JSON.stringify(state.historyWordsList));
     },
+    //删除单个搜索记录
+    removeThisHstoryWords(state, index) {
+      state.historyWordsList.splice(index, 1);
+      localStorage.setItem('historyWordsList', JSON.stringify(state.historyWordsList));
+    },
+    //删除所有搜索记录
+    removeAllHstoryWords(state) {
+      state.historyWordsList = [];
+      localStorage.setItem('historyWordsList', JSON.stringify(state.historyWordsList));
+    },
+     //设置底部radioPopup里的内容
+     setRadioObj(state, obj) {
+      state.radioObj = obj
+    },
   },
   getters: {
     footerShow: state => state.footerShow,

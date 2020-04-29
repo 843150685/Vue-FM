@@ -6,9 +6,9 @@ axios.defaults.timeout = 10000;
 // post请求头
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'; //配置请求头
 //请求携带cookie
-axios.defaults.withCredentials = true;
-//配置接口地址http://yiapi.xinli001.com  /api
-axios.defaults.baseURL = 'http://yiapi.xinli001.com'; 
+axios.defaults.withCredentials = false;
+//默认接口地址
+axios.defaults.baseURL = ''; 
 //导出请求的方法
 export default function scaxios(method, url, params) {
   if (method.toUpperCase() === "GET") {

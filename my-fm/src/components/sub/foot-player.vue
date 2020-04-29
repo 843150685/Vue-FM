@@ -2,10 +2,10 @@
 <template>
   <div class="footerPlayer-container">
     <transition name="playerPage">
-      <div class="playerPage-box" @touchmove.prevent>
+      <div class="playerPage-box" v-show="fullScreen" @touchmove.prevent>
         <!--播放器的背景图片-->
-       <div class="playerPage-bg" :style="{backgroundImage: 'url(' + this.playerInfo.cover + ')'}"></div>
-       <div class="content-box">
+        <div class="playerPage-bg" :style="{backgroundImage: 'url(' + this.playerInfo.cover + ')'}"></div>
+        <div class="content-box">
           <!--播放器的顶部按钮-->
           <div class="header">
             <span @click="toDown" class="down iconfont icon-icon-test60"></span>
@@ -110,6 +110,7 @@
     <!--小播放器-->
     <div v-if="footerShow">
       <transition name="footer">
+        <!--当大播放器消失的时候且播放列表有歌曲的时候 小播放器出现-->
         <footer class="footer-box" @click="toUp" v-show="!fullScreen&& playerList.length > 0">
           <div class="smallPalyBtn" @click.stop="playClick">
             <van-icon class="smallPlay" v-show="playing" name="play" />
@@ -168,8 +169,13 @@ export default {
       "footerShow"
     ])
   },
-  created() {
-    // this.getPlayer();
+  watch: {
+    mediaUrlId: function(newValue, oldValue) {
+      if (newValue != oldValue) {
+        this.getPlayer();
+        this.$store.commit("setPlaying", false);
+      }
+    }
   },
   methods: {
     //大播放器
@@ -182,19 +188,24 @@ export default {
     },
     //初始化播放器
     async getPlayer() {
-      let result = await sc("GET", "fm/broadcast-detail.json", {
-        params: {
-          id: this.mediaUrlId,
-          key: this.$store.state.key
+      let result = await sc(
+        "GET",
+        "http://yiapi.xinli001.com/fm/broadcast-detail.json",
+        {
+          params: {
+            id: this.mediaUrlId,
+            key: this.$store.state.key
+          }
         }
-      });
+      );
       //console.log(result.data.code,this.mediaUrlId)
-      if (result.data.code === 0) {
+      if (result.status === 200) {
         this.playerInfo = result.data.data;
-         if (this.$refs.audio.src != this.playerInfo.url) {
-        this.$refs.audio.src = this.playerInfo.url;
+        if (this.$refs.audio.src != this.playerInfo.url) {
+          this.$refs.audio.src = this.playerInfo.url;
+        }
       }
-    }},
+    },
     //控制进度条
     progressTouchStart(e) {
       this.songFlag = true; //手指按下时 进度条停止跳动
@@ -236,12 +247,12 @@ export default {
       });
     },
     //下载
-    xiazai(){
+    xiazai() {
       this.$toast({
-         duration: "2000",
-          position: "bottom",
-          message: "下载好了 小老弟"
-      })
+        duration: "2000",
+        position: "bottom",
+        message: "下载好了 小老弟"
+      });
     },
     //设置播放模式
     changePlayMode(modeNum) {
@@ -293,7 +304,7 @@ export default {
         this.$refs.audio.play();
         return;
       }
-       this.$refs.audio.pause();
+      this.$refs.audio.pause();
       this.$store.commit("setPlaying", true);
     },
     //底部列表popUP显示
@@ -303,7 +314,7 @@ export default {
         this.$refs.footerPopup.scrollInit();
       });
     },
-      //音频播放时间和进度条跟新
+    //音频播放时间和进度条跟新
     timeUpdate(e) {
       // 进度条随歌曲进度显示
       // 利用节流阀解决鼠标控制进度条时 进度条还会随歌曲进度改变的问题
@@ -332,7 +343,7 @@ export default {
       }
     }
   },
-   components: {
+  components: {
     footerPopup,
     radioPopup
   }
@@ -503,7 +514,7 @@ export default {
           transform: translateX(0%);
         }
         .shou_cang-enter {
-          transform:scale(3.5);
+          transform: scale(3.5);
         }
         .shou_cang-enter-active {
           transition: transform 0.3s;

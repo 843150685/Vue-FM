@@ -13,9 +13,7 @@ export default {
   name: "App",
   data: () => ({
     direction: "slide-right",
-    docmHeight: document.documentElement.clientHeight, //默认屏幕高度
-    showHeight: document.documentElement.clientHeight, //实时屏幕高度
-    hideshow: false //显示或者隐藏footplayer
+    hideshow: true //显示或者隐藏footplayer
   }),
 
   mounted() {
@@ -31,14 +29,6 @@ export default {
     footplayer
   },
   watch: {
-    showHeight: function() {
-      if (this.docmHeight > this.showHeight) {
-        this.hideshow = false;
-      } else {
-        this.hideshow = true;
-      }
-    },
-
     $route(to, from) {
       if (to.name == "comment") {
         this.direction = "comment";
