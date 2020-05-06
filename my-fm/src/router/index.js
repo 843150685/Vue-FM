@@ -7,41 +7,52 @@ const home = () => import("../components/navbar/home/home.vue");
 const login = () => import("../components/navbar/login.vue");
 const comment = () => import("../components/navbar/xinliFM/comment.vue");
 const search = () => import("../components/navbar/xinliFM/search.vue");
+const bodanContent = () => import("../components/navbar/find/boDanContent.vue");
+const bodanList = () => import("../components/navbar/find/bodanlist.vue")
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: '/',
-    component: appCover,
-  },
-  {
-    path: '/login',
-    component: login,
-    name: "login"
-  },
-  {
-    path: '/home',
-    name: "home",
-    component: home,
-    meta: {
-      keepAlive: true //需要被缓存的组件
+const routes = [{
+        path: '/',
+        component: appCover,
     },
-  },
-  {
-    path: "/fm/category/playerpage/comment/:id",
-    component: comment,
-    name: "comment"
-  },
-  {
-    path: '/fm/find/search',
-    component: search,
-    name: "search"
-  },
+    {
+        path: '/login',
+        component: login,
+        name: "login"
+    },
+    {
+        path: '/home',
+        name: "home",
+        component: home,
+        meta: {
+            keepAlive: true //需要被缓存的组件
+        },
+    },
+    {
+        path: "/fm/category/playerpage/comment/:id",
+        component: comment,
+        name: "comment"
+    },
+    {
+        path: '/fm/find/search',
+        component: search,
+        name: "search"
+    },
+    {
+        path: '/find/bodanlist/bodancontent',
+        component: bodanContent,
+        name: "bodanContent"
+    },
+    {
+        path: '/find/bodanlist',
+        component: bodanList,
+        name: "bodanList"
+    },
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  routes
+    mode: "history",
+    routes
 });
 
 export default router;
