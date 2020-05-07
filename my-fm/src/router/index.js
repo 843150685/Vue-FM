@@ -9,6 +9,8 @@ const comment = () => import("../components/navbar/xinliFM/comment.vue");
 const search = () => import("../components/navbar/xinliFM/search.vue");
 const bodanContent = () => import("../components/navbar/find/boDanContent.vue");
 const bodanList = () => import("../components/navbar/find/bodanlist.vue")
+const cate = () => import("../components/navbar/xinliFM/cate.vue")
+const cateList = () => import("../components/navbar/xinliFM/cateList.vue")
 Vue.use(VueRouter);
 
 const routes = [{
@@ -48,6 +50,17 @@ const routes = [{
         component: bodanList,
         name: "bodanList"
     },
+    {
+        path: "/fm/cate/:id",
+        component: cate,
+        name: "cate",
+        redirect: "/fm/cateList/:id",
+        children: [{
+            path: "/fm/cateList/:id",
+            component: cateList,
+            name: "cateList"
+        }]
+    }
 ];
 
 const router = new VueRouter({

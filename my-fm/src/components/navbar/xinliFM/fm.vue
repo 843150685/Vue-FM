@@ -183,7 +183,7 @@ export default {
 		//分类节目
 		toCategory(id) {
 			this.$router.push({
-				name: "category",
+				name: "cate",
 				params: { id }
 			});
 		},
@@ -191,6 +191,7 @@ export default {
 		toCommunicationPart() {},
 		//主播电台
 		toFindMore() {},
+		//热播节目
 		async getHotRadioList() {
 			let random = Math.floor(Math.random() * 990);
 			let res = await sc(

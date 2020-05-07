@@ -51,6 +51,9 @@
 							<p :class="{'comment_box_bg':showNum == index&&show ? true : false,'other_comment':true}" v-if="item.replyobject == null ? false : true">
 								<span>@{{ item.replyobject.user.nickname}}:</span>
 								{{ item.replyobject.content }}
+
+
+                                
 							</p>
 						</div>
 					</div>
@@ -98,10 +101,7 @@ export default {
 	methods: {
 		//--------控制背景盒子显示和隐藏
 		showCommentControl(e, index) {
-			// console.log(e);
-
-			// console.dir(this.$refs.commentBox[index].offsetTop);
-
+			console.log(e);
 			if (this.showNum == index) {
 				this.show = !this.show;
 			} else {
