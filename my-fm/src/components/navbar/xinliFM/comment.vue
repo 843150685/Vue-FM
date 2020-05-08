@@ -101,7 +101,7 @@ export default {
 	methods: {
 		//--------控制背景盒子显示和隐藏
 		showCommentControl(e, index) {
-			console.log(e);
+			//console.log(e);
 			if (this.showNum == index) {
 				this.show = !this.show;
 			} else {

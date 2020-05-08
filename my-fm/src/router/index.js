@@ -8,9 +8,12 @@ const login = () => import("../components/navbar/login.vue");
 const comment = () => import("../components/navbar/xinliFM/comment.vue");
 const search = () => import("../components/navbar/xinliFM/search.vue");
 const bodanContent = () => import("../components/navbar/find/boDanContent.vue");
-const bodanList = () => import("../components/navbar/find/bodanlist.vue")
-const cate = () => import("../components/navbar/xinliFM/cate.vue")
-const cateList = () => import("../components/navbar/xinliFM/cateList.vue")
+const bodanList = () => import("../components/navbar/find/bodanlist.vue");
+const cate = () => import("../components/navbar/xinliFM/cate.vue");
+const cateList = () => import("../components/navbar/xinliFM/cateList.vue");
+const findzhubo = () => import("../components/sub/findzhubo.vue");
+const radioSpeakerDeyial = () => import("../components/sub/zhubidetail.vue");
+
 Vue.use(VueRouter);
 
 const routes = [{
@@ -60,7 +63,17 @@ const routes = [{
             component: cateList,
             name: "cateList"
         }]
-    }
+    },
+    {
+        path:"/find/findzhubo",
+        component:findzhubo,
+        name:"findzhubo"
+    },
+    {
+        path: '/find/radiospeakerdeyial/:id',
+        component: radioSpeakerDeyial,
+        name: "RadioSpeakerDeyial"
+      },
 ];
 
 const router = new VueRouter({

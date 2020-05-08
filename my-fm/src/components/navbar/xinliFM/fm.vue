@@ -190,7 +190,11 @@ export default {
 		//即使倾述
 		toCommunicationPart() {},
 		//主播电台
-		toFindMore() {},
+		toFindMore() {
+			this.$router.push({
+				name:"findzhubo"
+			})
+		},
 		//热播节目
 		async getHotRadioList() {
 			let random = Math.floor(Math.random() * 990);
