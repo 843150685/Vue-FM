@@ -188,7 +188,11 @@ export default {
 			});
 		},
 		//即使倾述
-		toCommunicationPart() {},
+		toCommunicationPart() {
+			this.$router.push({
+        name: "communicationPart"
+      });
+		},
 		//主播电台
 		toFindMore() {
 			this.$router.push({

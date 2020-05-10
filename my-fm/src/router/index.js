@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
 //路由懒加载
 const appCover = () => import("../components/navbar/appCover.vue");
 const home = () => import("../components/navbar/home/home.vue");
@@ -13,7 +12,9 @@ const cate = () => import("../components/navbar/xinliFM/cate.vue");
 const cateList = () => import("../components/navbar/xinliFM/cateList.vue");
 const findzhubo = () => import("../components/sub/findzhubo.vue");
 const radioSpeakerDeyial = () => import("../components/sub/zhubidetail.vue");
-
+const communicationPart = ()=> import ("../components/sub/communication/communicationPart.vue")
+const communicationDetails =()=> import ("../components/sub/communication/communicationDetails.vue")
+const communicationCompile= ()=> import ("../components/sub/communication/communicationCompile.vue")
 Vue.use(VueRouter);
 
 const routes = [{
@@ -73,6 +74,21 @@ const routes = [{
         path: '/find/radiospeakerdeyial/:id',
         component: radioSpeakerDeyial,
         name: "RadioSpeakerDeyial"
+      },
+      {
+        path: '/fm/communicationPart',
+        component: communicationPart,
+        name: "communicationPart"
+      },
+      {
+        path: '/fm/communicationPart/communicationDetails/:id',
+        component: communicationDetails,
+        name: "communicationDetails"
+      },
+      {
+        path: '/fm/communicationPart/communicationCompile',
+        component: communicationCompile,
+        name: "communicationCompile"
       },
 ];
 
