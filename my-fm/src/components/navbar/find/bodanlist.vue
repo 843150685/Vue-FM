@@ -73,11 +73,11 @@ export default {
 			font-size: 0.75rem;
 			font-weight: 550;
 		}
-		.serch-box,
+	.serach-box,
 		.set-box {
 			display: flex;
 			align-items: center;
-			width: 3.125rem;
+			width: 20%;
 			a {
 				margin-left: 0.3125rem;
 				font-size: 0.875rem;

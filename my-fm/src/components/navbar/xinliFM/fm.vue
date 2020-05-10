@@ -22,7 +22,7 @@
 					</div>
 				</div>
 			</div>
-			<listTitle :title="'热播节目'" :iconame="'icon-liuhang'"></listTitle>
+			<listTitle :title="'热播节目'" :iconame="'icon-liuhang'" :more="false"></listTitle>
 			<div class="radio_list">
 				<div class="list_init">
 					<div class="radio_item" v-for="(ele, index) in HotRadioList" :key="index" @click="toPlayerPage(ele.id)">
@@ -44,7 +44,7 @@
 					<span class="change_text">换一换</span>
 				</div>
 			</div>
-			<listTitle :title="'推荐播单'" :iconame="'icon-tuijian4'" to="/find/bodanlist"></listTitle>
+			<listTitle :title="'推荐播单'" :iconame="'icon-tuijian4'" :to="'/find/bodanlist'" :more="true"></listTitle>
 			<findbodan :bodanList="recommendBodanList"></findbodan>
 			<listTitle :title="'最新精选'" :iconame="'icon-icon-test5'" :more="false"></listTitle>
 			<div class="radio_list">
